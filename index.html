@@ -26,7 +26,7 @@
       --accent: #8d7b68;
       --sage: #dfe5da;
       --shadow: 0 24px 70px rgba(47,45,42,0.13);
-      --hero-image-offset: 64px;
+      --hero-image-offset: 106px;
       --hero-parallax: 0px;
     }
 
@@ -333,7 +333,7 @@
       }
 
       :root {
-        --hero-image-offset: 46px;
+        --hero-image-offset: 78px;
       }
 
       .small-title {
@@ -446,7 +446,7 @@
 </head>
 <body>
 
-  <audio id="background-music" autoplay loop preload="auto">
+  <audio id="background-music" autoplay loop playsinline preload="auto">
     <source src="daap.mp3" type="audio/mpeg">
   </audio>
 
@@ -554,6 +554,33 @@
       musicToggle.setAttribute('title', isPaused ? 'Spill musikk' : 'Sett musikk på pause');
     }
 
+    async function playAudio() {
+      try {
+        await audio.play();
+        return true;
+      } catch {
+        return false;
+      } finally {
+        updateMusicButton();
+      }
+    }
+
+    function setupAutoplayFallback() {
+      const startFromPageInteraction = (event) => {
+        if (event.target instanceof Element && event.target.closest('.music-toggle')) return;
+
+        playAudio().then((started) => {
+          if (started) {
+            document.removeEventListener('pointerdown', startFromPageInteraction);
+            document.removeEventListener('keydown', startFromPageInteraction);
+          }
+        });
+      };
+
+      document.addEventListener('pointerdown', startFromPageInteraction, { passive: true });
+      document.addEventListener('keydown', startFromPageInteraction);
+    }
+
     function setupRevealAnimations() {
       const revealItems = document.querySelectorAll('.reveal');
 
@@ -600,16 +627,17 @@
 
     musicToggle.addEventListener('click', async () => {
       if (audio.paused) {
-        await audio.play();
+        await playAudio();
       } else {
         audio.pause();
       }
       updateMusicButton();
     });
 
-    audio.play().then(updateMusicButton).catch(updateMusicButton);
+    playAudio();
     audio.addEventListener('play', updateMusicButton);
     audio.addEventListener('pause', updateMusicButton);
+    setupAutoplayFallback();
     setupRevealAnimations();
     setupHeroParallax();
   </script>
