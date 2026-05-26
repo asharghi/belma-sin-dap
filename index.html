@@ -56,26 +56,38 @@
     .hero::before {
       content: "";
       position: absolute;
-      inset: -8%;
-      z-index: -1;
-      background: url('belma.png') center 49% / min(780px, 84vw) auto no-repeat;
-      opacity: 0.42;
-      filter: drop-shadow(0 38px 65px rgba(47,45,42,0.22)) saturate(0.98);
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.72) 0%, rgba(248,245,240,0.82) 45%, rgba(248,245,240,0.98) 78%),
+        linear-gradient(180deg, rgba(248,245,240,0.85), rgba(239,233,224,0.98));
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      z-index: -2;
-      background:
-        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.72) 0%, rgba(248,245,240,0.82) 45%, rgba(248,245,240,0.98) 78%),
-        linear-gradient(180deg, rgba(248,245,240,0.85), rgba(239,233,224,0.98));
+      z-index: 2;
+      background: linear-gradient(90deg, rgba(248,245,240,0) 0%, rgba(248,245,240,0.36) 45%, rgba(248,245,240,0.72) 100%);
+    }
+
+    .hero-portrait {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 1;
+      height: min(90vh, 820px);
+      width: auto;
+      max-width: none;
+      opacity: 0.46;
+      pointer-events: none;
+      user-select: none;
     }
 
     .hero-content {
+      position: relative;
+      z-index: 3;
       max-width: 800px;
-      backdrop-filter: blur(2px);
     }
 
     .hero-content.is-visible {
@@ -327,10 +339,13 @@
         padding: 90px 20px;
       }
 
-      .hero::before {
-        background-size: min(560px, 108vw) auto;
-        background-position: center 46%;
-        opacity: 0.4;
+      .hero::after {
+        background: linear-gradient(90deg, rgba(248,245,240,0.06) 0%, rgba(248,245,240,0.46) 58%, rgba(248,245,240,0.82) 100%);
+      }
+
+      .hero-portrait {
+        height: min(86vh, 720px);
+        opacity: 0.42;
       }
     }
 
@@ -400,6 +415,7 @@
   <button class="music-toggle" type="button" aria-label="Spill musikk" title="Spill musikk"></button>
 
   <section class="hero">
+    <img class="hero-portrait" src="belma.png" alt="" aria-hidden="true" />
     <div class="hero-content reveal is-visible">
       <div class="small-title">Søndag 6. september 2026 · kl. 12:30 · Lillestrøm kirke</div>
       <h1>Belma<br>sin dåp</h1>
