@@ -26,6 +26,7 @@
       --accent: #8d7b68;
       --sage: #dfe5da;
       --shadow: 0 24px 70px rgba(47,45,42,0.13);
+      --hero-image-offset: 64px;
       --hero-parallax: 0px;
     }
 
@@ -60,7 +61,7 @@
       inset: -8%;
       z-index: -2;
       background: url('kirke.jpg') center center / cover no-repeat;
-      transform: translate3d(0, var(--hero-parallax), 0) scale(1.08);
+      transform: translate3d(0, calc(var(--hero-image-offset) + var(--hero-parallax)), 0) scale(1.08);
       will-change: transform;
     }
 
@@ -329,6 +330,10 @@
       .hero {
         min-height: 92vh;
         padding: 30px 20px;
+      }
+
+      :root {
+        --hero-image-offset: 46px;
       }
 
       .small-title {
