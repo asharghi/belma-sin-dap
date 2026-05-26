@@ -57,21 +57,20 @@
       content: "";
       position: absolute;
       inset: -8%;
-      z-index: -2;
-      background: url('belma.png') center 48% / min(640px, 76vw) auto no-repeat;
-      opacity: 0.24;
-      filter: drop-shadow(0 38px 65px rgba(47,45,42,0.22)) saturate(0.95);
-      mix-blend-mode: multiply;
+      z-index: -1;
+      background: url('belma.png') center 49% / min(780px, 84vw) auto no-repeat;
+      opacity: 0.42;
+      filter: drop-shadow(0 38px 65px rgba(47,45,42,0.22)) saturate(0.98);
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      z-index: -1;
+      z-index: -2;
       background:
-        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.3) 0%, rgba(248,245,240,0.72) 45%, rgba(248,245,240,0.95) 78%),
-        linear-gradient(180deg, rgba(248,245,240,0.72), rgba(239,233,224,0.96));
+        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.72) 0%, rgba(248,245,240,0.82) 45%, rgba(248,245,240,0.98) 78%),
+        linear-gradient(180deg, rgba(248,245,240,0.85), rgba(239,233,224,0.98));
     }
 
     .hero-content {
@@ -329,9 +328,9 @@
       }
 
       .hero::before {
-        background-size: min(500px, 92vw) auto;
-        background-position: center 45%;
-        opacity: 0.22;
+        background-size: min(560px, 108vw) auto;
+        background-position: center 46%;
+        opacity: 0.4;
       }
     }
 
