@@ -6,7 +6,7 @@
   <meta name="description" content="Belma sin dåp i Lillestrøm kirke søndag 6. september 2026 kl. 12:30." />
   <meta property="og:title" content="Belma sin dåp" />
   <meta property="og:description" content="Søndag 6. september 2026 kl. 12:30 i Lillestrøm kirke." />
-  <meta property="og:image" content="https://asharghi.github.io/belma-sin-dap/belma.png" />
+  <meta property="og:image" content="https://asharghi.github.io/belma-sin-dap/belma.jpg" />
   <title>Belma sin dåp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,22 +74,26 @@
 
     .hero-portrait {
       position: absolute;
-      left: 0;
+      left: 50%;
       bottom: 0;
       z-index: 1;
       height: 100vh;
       height: 100svh;
       width: auto;
       max-width: none;
-      opacity: 0.46;
+      opacity: 0.48;
+      transform: translateX(-50%);
       pointer-events: none;
       user-select: none;
+      mix-blend-mode: multiply;
     }
 
     .hero-content {
       position: relative;
       z-index: 3;
+      --hero-content-y: 11vh;
       max-width: 800px;
+      transform: translateY(var(--hero-content-y));
     }
 
     .hero-content.is-visible {
@@ -318,11 +322,11 @@
     @keyframes softEnter {
       from {
         opacity: 0;
-        transform: translateY(36px) scale(0.98);
+        transform: translateY(calc(var(--hero-content-y, 0px) + 36px)) scale(0.98);
       }
       to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(var(--hero-content-y, 0px)) scale(1);
       }
     }
 
@@ -355,11 +359,13 @@
       }
 
       .hero-portrait {
-        left: 50%;
-        transform: translateX(-50%);
         height: 100vh;
         height: 100svh;
-        opacity: 0.42;
+        opacity: 0.5;
+      }
+
+      .hero-content {
+        --hero-content-y: 9vh;
       }
     }
 
@@ -412,6 +418,11 @@
         transition: none;
       }
 
+      .hero-content.is-visible {
+        animation: none;
+        transform: translateY(var(--hero-content-y));
+      }
+
       .card,
       .button,
       .music-toggle {
@@ -429,7 +440,7 @@
   <button class="music-toggle" type="button" aria-label="Spill musikk" title="Spill musikk"></button>
 
   <section class="hero">
-    <img class="hero-portrait" src="belma.png" alt="" aria-hidden="true" />
+    <img class="hero-portrait" src="belma.jpg" alt="" aria-hidden="true" />
     <div class="hero-content reveal is-visible">
       <div class="small-title">
         <span>Søndag 6. september 2026 · kl. 12:30</span>
