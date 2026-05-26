@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Belma sin dåp i Lillestrøm kirke søndag 6. september 2026 kl. 12:30." />
+  <meta property="og:title" content="Belma sin dåp" />
+  <meta property="og:description" content="Søndag 6. september 2026 kl. 12:30 i Lillestrøm kirke." />
+  <meta property="og:image" content="https://asharghi.github.io/belma-sin-dap/lillestrom-kirke.jpg" />
+  <title>Belma sin dåp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8f5f0;
+      color: #2b2b2b;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      background:
+        linear-gradient(rgba(248,245,240,0.5), rgba(248,245,240,0.84)),
+        url('lillestrom-kirke.jpg') center center / cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      animation: fadeUp 1.5s ease;
+      backdrop-filter: blur(2px);
+    }
+
+    .small-title {
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 25px;
+      color: #8d7b68;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(70px, 12vw, 150px);
+      line-height: 0.9;
+      font-weight: 400;
+      margin-bottom: 30px;
+      color: #2c2b2a;
+    }
+
+    .intro {
+      font-size: 20px;
+      line-height: 1.8;
+      max-width: 650px;
+      margin: 0 auto;
+      color: #5f564d;
+    }
+
+    .section {
+      padding: 120px 25px;
+    }
+
+    .details {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.62);
+      border: 1px solid rgba(0,0,0,0.05);
+      padding: 50px 35px;
+      border-radius: 8px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: 0.3s ease;
+      cursor: default;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    .card p {
+      line-height: 1.7;
+      color: #5e5a56;
+    }
+
+    .quote {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      padding: 120px 25px;
+    }
+
+    .quote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.4;
+      color: #3d3a37;
+      margin-bottom: 20px;
+    }
+
+    .quote span {
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #8b8178;
+    }
+
+    .rsvp {
+      text-align: center;
+      background: #efe9e0;
+      padding: 120px 25px;
+    }
+
+    .rsvp h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 8vw, 90px);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .rsvp p {
+      font-size: 18px;
+      color: #5f564d;
+      margin-bottom: 35px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 18px 42px;
+      border-radius: 999px;
+      background: #2f2d2a;
+      color: white;
+      text-decoration: none;
+      transition: 0.3s ease;
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+
+    .button:hover {
+      opacity: 0.85;
+      transform: scale(1.03);
+    }
+
+    .music-toggle {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 5;
+      width: 52px;
+      height: 52px;
+      border: 0;
+      border-radius: 50%;
+      background: #2f2d2a;
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .music-toggle:hover {
+      opacity: 0.9;
+      transform: scale(1.04);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 13px;
+      color: #8a8179;
+    }
+
+    footer a {
+      color: inherit;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media(max-width: 768px) {
+      .hero {
+        min-height: 92vh;
+        padding: 30px 20px;
+      }
+
+      .small-title {
+        letter-spacing: 4px;
+      }
+
+      .intro {
+        font-size: 17px;
+      }
+
+      .section,
+      .quote,
+      .rsvp {
+        padding: 90px 20px;
+      }
+    }
+
+    @media(min-width: 900px) {
+      .details {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media(min-width: 1200px) {
+      .hero {
+        padding: 80px;
+      }
+
+      .section,
+      .rsvp {
+        padding: 140px 60px;
+      }
+
+      .quote {
+        padding: 140px 60px;
+      }
+
+      .card {
+        padding: 60px 40px;
+      }
+    }
+
+    .button:focus-visible,
+    .music-toggle:focus-visible {
+      outline: 2px solid #8d7b68;
+      outline-offset: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="background-music" autoplay loop preload="auto">
+    <source src="daap.mp3" type="audio/mpeg">
+  </audio>
+
+  <button class="music-toggle" type="button" aria-label="Spill musikk" title="Spill musikk">♪</button>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="small-title">Søndag 6. september 2026 · kl. 12:30 · Lillestrøm kirke</div>
+      <h1>Belma<br>sin dåp</h1>
+      <p class="intro">
+        Vi gleder oss til å feire en spesiell dag sammen med familie og venner i Lillestrøm kirke.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="details">
+      <div class="card">
+        <h3>Sted</h3>
+        <p>
+          Lillestrøm kirke<br>
+          Kirkegata 2<br>
+          2000 Lillestrøm
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Dato</h3>
+        <p>
+          Søndag<br>
+          6. september 2026
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Tid</h3>
+        <p>
+          Dåpsgudstjeneste<br>
+          kl. 12:30
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Feiring</h3>
+        <p>
+          Etter dåpen inviteres det til selskap for familie og venner.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote">
+    <p>
+      “La barna komme til meg, og hindre dem ikke! For Guds rike tilhører slike som dem.”
+    </p>
+    <span>Markus 10,14</span>
+  </section>
+
+  <section class="rsvp">
+    <h2>RSVP</h2>
+    <p>
+      Vi setter stor pris på svar innen 1. juli 2026.
+    </p>
+
+    <a class="button" href="mailto:helle.victoria@hotmail.com?subject=Belma%20sin%20d%C3%A5p">
+      Gi beskjed her
+    </a>
+  </section>
+
+  <footer>
+    Med kjærlighet · Belma sin dåp · Lillestrøm kirke ·
+    Foto: <a href="https://commons.wikimedia.org/wiki/File:Lillestr%C3%B6m_kirke.jpg">Bjoertvedt</a>,
+    <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>
+  </footer>
+
+  <script>
+    const audio = document.getElementById('background-music');
+    const musicToggle = document.querySelector('.music-toggle');
+
+    function updateMusicButton() {
+      const isPaused = audio.paused;
+      musicToggle.textContent = isPaused ? '♪' : 'Ⅱ';
+      musicToggle.setAttribute('aria-label', isPaused ? 'Spill musikk' : 'Sett musikk på pause');
+      musicToggle.setAttribute('title', isPaused ? 'Spill musikk' : 'Sett musikk på pause');
+    }
+
+    musicToggle.addEventListener('click', async () => {
+      if (audio.paused) {
+        await audio.play();
+      } else {
+        audio.pause();
+      }
+      updateMusicButton();
+    });
+
+    audio.play().then(updateMusicButton).catch(updateMusicButton);
+    audio.addEventListener('play', updateMusicButton);
+    audio.addEventListener('pause', updateMusicButton);
+  </script>
+
+</body>
+</html>
