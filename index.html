@@ -6,7 +6,7 @@
   <meta name="description" content="Belma sin dåp i Lillestrøm kirke søndag 6. september 2026 kl. 12:30." />
   <meta property="og:title" content="Belma sin dåp" />
   <meta property="og:description" content="Søndag 6. september 2026 kl. 12:30 i Lillestrøm kirke." />
-  <meta property="og:image" content="https://asharghi.github.io/belma-sin-dap/kirke.jpg" />
+  <meta property="og:image" content="https://asharghi.github.io/belma-sin-dap/belma.png" />
   <title>Belma sin dåp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,9 +26,6 @@
       --accent: #8d7b68;
       --sage: #dfe5da;
       --shadow: 0 24px 70px rgba(47,45,42,0.13);
-      --hero-image-x: 50%;
-      --hero-image-offset: 106px;
-      --hero-parallax: 0px;
     }
 
     html {
@@ -61,9 +58,10 @@
       position: absolute;
       inset: -8%;
       z-index: -2;
-      background: url('kirke.jpg') var(--hero-image-x) center / cover no-repeat;
-      transform: translate3d(0, calc(var(--hero-image-offset) + var(--hero-parallax)), 0) scale(1.08);
-      will-change: transform;
+      background: url('belma.png') center 48% / min(640px, 76vw) auto no-repeat;
+      opacity: 0.24;
+      filter: drop-shadow(0 38px 65px rgba(47,45,42,0.22)) saturate(0.95);
+      mix-blend-mode: multiply;
     }
 
     .hero::after {
@@ -72,8 +70,8 @@
       inset: 0;
       z-index: -1;
       background:
-        linear-gradient(rgba(248,245,240,0.42), rgba(248,245,240,0.88)),
-        linear-gradient(90deg, rgba(248,245,240,0.1), rgba(248,245,240,0.55));
+        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.3) 0%, rgba(248,245,240,0.72) 45%, rgba(248,245,240,0.95) 78%),
+        linear-gradient(180deg, rgba(248,245,240,0.72), rgba(239,233,224,0.96));
     }
 
     .hero-content {
@@ -179,28 +177,12 @@
       color: #8b8178;
     }
 
-    .invitation {
-      background:
-        linear-gradient(135deg, var(--paper-warm) 0%, #f7f1e8 52%, var(--sage) 100%);
-      overflow: hidden;
-    }
-
-    .baby-section {
-      padding: 40px 0 0;
-      text-align: center;
-    }
-
-    .baby-photo {
-      width: min(680px, 94vw);
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      filter: drop-shadow(0 32px 58px rgba(47,45,42,0.22));
-    }
-
     .rsvp {
       text-align: center;
-      padding: 90px 25px 110px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.42), rgba(255,255,255,0) 44%),
+        linear-gradient(135deg, var(--paper-warm) 0%, #f7f1e8 52%, var(--sage) 100%);
+      padding: 120px 25px;
     }
 
     .rsvp > * {
@@ -333,11 +315,6 @@
         padding: 30px 20px;
       }
 
-      :root {
-        --hero-image-x: 72%;
-        --hero-image-offset: 78px;
-      }
-
       .small-title {
         letter-spacing: 4px;
       }
@@ -351,13 +328,10 @@
         padding: 90px 20px;
       }
 
-      .baby-section {
-        padding-top: 20px;
-      }
-
-      .baby-photo {
-        width: min(560px, 100vw);
-        margin: 0;
+      .hero::before {
+        background-size: min(500px, 92vw) auto;
+        background-position: center 45%;
+        opacity: 0.22;
       }
     }
 
@@ -366,31 +340,7 @@
         grid-template-columns: repeat(4, 1fr);
       }
 
-      .invitation {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
-        min-height: 640px;
-      }
-
-      .baby-section {
-        min-height: 640px;
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-start;
-        padding: 0;
-      }
-
-      .baby-photo {
-        width: min(760px, 54vw);
-        margin: 0;
-      }
-
       .rsvp {
-        min-height: 640px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         padding: 120px 60px;
       }
     }
@@ -426,10 +376,6 @@
     @media(prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
-      }
-
-      .hero::before {
-        transform: scale(1.04);
       }
 
       .reveal {
@@ -507,21 +453,15 @@
     <span class="reveal delay-1">Markus 10,14</span>
   </section>
 
-  <section class="invitation">
-    <div class="baby-section" aria-label="Bilde av Belma">
-      <img class="baby-photo reveal" src="belma.png" alt="Belma" />
-    </div>
+  <section class="rsvp reveal">
+    <h2>RSVP</h2>
+    <p>
+      Vi setter stor pris på svar innen 1. juli 2026.
+    </p>
 
-    <div class="rsvp reveal delay-1">
-      <h2>RSVP</h2>
-      <p>
-        Vi setter stor pris på svar innen 1. juli 2026.
-      </p>
-
-      <a class="button" href="mailto:helle.victoria@hotmail.com?subject=Belma%20sin%20d%C3%A5p">
-        Gi beskjed her
-      </a>
-    </div>
+    <a class="button" href="mailto:helle.victoria@hotmail.com?subject=Belma%20sin%20d%C3%A5p">
+      Gi beskjed her
+    </a>
   </section>
 
   <footer>
@@ -606,27 +546,6 @@
       revealItems.forEach((item) => observer.observe(item));
     }
 
-    function setupHeroParallax() {
-      if (reducedMotion) return;
-
-      let ticking = false;
-
-      function updateParallax() {
-        const offset = Math.min(window.scrollY * 0.18, 120);
-        document.documentElement.style.setProperty('--hero-parallax', `${offset}px`);
-        ticking = false;
-      }
-
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(updateParallax);
-          ticking = true;
-        }
-      }, { passive: true });
-
-      updateParallax();
-    }
-
     musicToggle.addEventListener('click', async () => {
       if (audio.paused) {
         await playAudio();
@@ -641,7 +560,6 @@
     audio.addEventListener('pause', updateMusicButton);
     setupAutoplayFallback();
     setupRevealAnimations();
-    setupHeroParallax();
   </script>
 
 </body>
