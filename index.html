@@ -104,6 +104,14 @@
       color: var(--accent);
     }
 
+    .small-title span {
+      display: block;
+    }
+
+    .small-title span + span {
+      margin-top: 8px;
+    }
+
     h1 {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(70px, 12vw, 150px);
@@ -347,6 +355,8 @@
       }
 
       .hero-portrait {
+        left: 50%;
+        transform: translateX(-50%);
         height: 100vh;
         height: 100svh;
         opacity: 0.42;
@@ -421,7 +431,10 @@
   <section class="hero">
     <img class="hero-portrait" src="belma.png" alt="" aria-hidden="true" />
     <div class="hero-content reveal is-visible">
-      <div class="small-title">Søndag 6. september 2026 · kl. 12:30 · Lillestrøm kirke</div>
+      <div class="small-title">
+        <span>Søndag 6. september 2026 · kl. 12:30</span>
+        <span>Lillestrøm kirke</span>
+      </div>
       <h1>Belma<br>sin dåp</h1>
       <p class="intro">
         Vi gleder oss til å feire en spesiell dag sammen med familie og venner i Lillestrøm kirke.
