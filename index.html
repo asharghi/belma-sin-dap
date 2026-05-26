@@ -6,7 +6,7 @@
   <meta name="description" content="Belma sin dåp i Lillestrøm kirke søndag 6. september 2026 kl. 12:30." />
   <meta property="og:title" content="Belma sin dåp" />
   <meta property="og:description" content="Søndag 6. september 2026 kl. 12:30 i Lillestrøm kirke." />
-  <meta property="og:image" content="https://asharghi.github.io/belma-sin-dap/lillestrom-kirke.jpg" />
+  <meta property="og:image" content="https://asharghi.github.io/belma-sin-dap/kirke.jpg" />
   <title>Belma sin dåp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +18,26 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --paper: #f8f5f0;
+      --paper-warm: #efe9e0;
+      --ink: #2b2b2b;
+      --muted: #5f564d;
+      --accent: #8d7b68;
+      --sage: #dfe5da;
+      --shadow: 0 24px 70px rgba(47,45,42,0.13);
+      --hero-parallax: 0px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: #f8f5f0;
-      color: #2b2b2b;
+      background:
+        linear-gradient(180deg, var(--paper) 0%, #fbfaf6 38%, var(--paper-warm) 100%);
+      color: var(--ink);
       overflow-x: hidden;
     }
 
@@ -33,15 +49,38 @@
       justify-content: center;
       text-align: center;
       padding: 40px;
+      overflow: hidden;
+      isolation: isolate;
+      background: var(--paper);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -8%;
+      z-index: -2;
+      background: url('kirke.jpg') center center / cover no-repeat;
+      transform: translate3d(0, var(--hero-parallax), 0) scale(1.08);
+      will-change: transform;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
       background:
-        linear-gradient(rgba(248,245,240,0.5), rgba(248,245,240,0.84)),
-        url('lillestrom-kirke.jpg') center center / cover no-repeat;
+        linear-gradient(rgba(248,245,240,0.42), rgba(248,245,240,0.88)),
+        linear-gradient(90deg, rgba(248,245,240,0.1), rgba(248,245,240,0.55));
     }
 
     .hero-content {
       max-width: 800px;
-      animation: fadeUp 1.5s ease;
       backdrop-filter: blur(2px);
+    }
+
+    .hero-content.is-visible {
+      animation: softEnter 1.3s ease both;
     }
 
     .small-title {
@@ -49,7 +88,7 @@
       text-transform: uppercase;
       font-size: 13px;
       margin-bottom: 25px;
-      color: #8d7b68;
+      color: var(--accent);
     }
 
     h1 {
@@ -59,6 +98,7 @@
       font-weight: 400;
       margin-bottom: 30px;
       color: #2c2b2a;
+      text-shadow: 0 16px 60px rgba(47,45,42,0.16);
     }
 
     .intro {
@@ -66,11 +106,13 @@
       line-height: 1.8;
       max-width: 650px;
       margin: 0 auto;
-      color: #5f564d;
+      color: var(--muted);
     }
 
     .section {
+      position: relative;
       padding: 120px 25px;
+      background: linear-gradient(180deg, #fbfaf7 0%, var(--paper) 100%);
     }
 
     .details {
@@ -78,22 +120,25 @@
       margin: auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 40px;
+      gap: 24px;
     }
 
     .card {
-      background: rgba(255,255,255,0.62);
-      border: 1px solid rgba(0,0,0,0.05);
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(47,45,42,0.07);
       padding: 50px 35px;
       border-radius: 8px;
       text-align: center;
-      backdrop-filter: blur(10px);
-      transition: 0.3s ease;
+      box-shadow: 0 18px 55px rgba(47,45,42,0.08);
+      backdrop-filter: blur(14px);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
       cursor: default;
     }
 
     .card:hover {
       transform: translateY(-6px);
+      border-color: rgba(141,123,104,0.24);
+      box-shadow: var(--shadow);
     }
 
     .card h3 {
@@ -121,19 +166,45 @@
       line-height: 1.4;
       color: #3d3a37;
       margin-bottom: 20px;
+      text-wrap: balance;
     }
 
     .quote span {
+      display: inline-block;
       letter-spacing: 3px;
       text-transform: uppercase;
       font-size: 12px;
       color: #8b8178;
     }
 
+    .invitation {
+      background:
+        linear-gradient(135deg, var(--paper-warm) 0%, #f7f1e8 52%, var(--sage) 100%);
+      overflow: hidden;
+    }
+
+    .baby-section {
+      padding: 40px 0 0;
+      text-align: center;
+    }
+
+    .baby-photo {
+      width: min(680px, 94vw);
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 32px 58px rgba(47,45,42,0.22));
+    }
+
     .rsvp {
       text-align: center;
-      background: #efe9e0;
-      padding: 120px 25px;
+      padding: 90px 25px 110px;
+    }
+
+    .rsvp > * {
+      max-width: 430px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .rsvp h2 {
@@ -145,7 +216,7 @@
 
     .rsvp p {
       font-size: 18px;
-      color: #5f564d;
+      color: var(--muted);
       margin-bottom: 35px;
     }
 
@@ -156,7 +227,8 @@
       background: #2f2d2a;
       color: white;
       text-decoration: none;
-      transition: 0.3s ease;
+      box-shadow: 0 18px 40px rgba(47,45,42,0.2);
+      transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
       font-size: 15px;
       letter-spacing: 1px;
     }
@@ -164,6 +236,7 @@
     .button:hover {
       opacity: 0.85;
       transform: scale(1.03);
+      box-shadow: 0 22px 46px rgba(47,45,42,0.25);
     }
 
     .music-toggle {
@@ -180,7 +253,7 @@
       font-size: 22px;
       cursor: pointer;
       box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-      transition: transform 0.25s ease, opacity 0.25s ease;
+      transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease;
     }
 
     .music-toggle svg {
@@ -198,6 +271,7 @@
     .music-toggle:hover {
       opacity: 0.9;
       transform: scale(1.04);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.24);
     }
 
     footer {
@@ -211,14 +285,39 @@
       color: inherit;
     }
 
-    @keyframes fadeUp {
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transition-delay: var(--reveal-delay, 0s);
+      will-change: transform, opacity;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 {
+      --reveal-delay: 0.08s;
+    }
+
+    .delay-2 {
+      --reveal-delay: 0.16s;
+    }
+
+    .delay-3 {
+      --reveal-delay: 0.24s;
+    }
+
+    @keyframes softEnter {
       from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(36px) scale(0.98);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
     }
 
@@ -241,15 +340,51 @@
       }
 
       .section,
-      .quote,
-      .rsvp {
+      .quote {
         padding: 90px 20px;
+      }
+
+      .baby-section {
+        padding-top: 20px;
+      }
+
+      .baby-photo {
+        width: min(560px, 100vw);
+        margin: 0;
       }
     }
 
     @media(min-width: 900px) {
       .details {
         grid-template-columns: repeat(4, 1fr);
+      }
+
+      .invitation {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
+        min-height: 640px;
+      }
+
+      .baby-section {
+        min-height: 640px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding: 0;
+      }
+
+      .baby-photo {
+        width: min(760px, 54vw);
+        margin: 0;
+      }
+
+      .rsvp {
+        min-height: 640px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 120px 60px;
       }
     }
 
@@ -258,13 +393,16 @@
         padding: 80px;
       }
 
-      .section,
-      .rsvp {
+      .section {
         padding: 140px 60px;
       }
 
       .quote {
         padding: 140px 60px;
+      }
+
+      .rsvp {
+        padding: 140px 70px;
       }
 
       .card {
@@ -277,6 +415,28 @@
       outline: 2px solid #8d7b68;
       outline-offset: 4px;
     }
+
+    @media(prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .hero::before {
+        transform: scale(1.04);
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .card,
+      .button,
+      .music-toggle {
+        transition: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -288,7 +448,7 @@
   <button class="music-toggle" type="button" aria-label="Spill musikk" title="Spill musikk"></button>
 
   <section class="hero">
-    <div class="hero-content">
+    <div class="hero-content reveal is-visible">
       <div class="small-title">Søndag 6. september 2026 · kl. 12:30 · Lillestrøm kirke</div>
       <h1>Belma<br>sin dåp</h1>
       <p class="intro">
@@ -299,7 +459,7 @@
 
   <section class="section">
     <div class="details">
-      <div class="card">
+      <div class="card reveal">
         <h3>Sted</h3>
         <p>
           Lillestrøm kirke<br>
@@ -308,7 +468,7 @@
         </p>
       </div>
 
-      <div class="card">
+      <div class="card reveal delay-1">
         <h3>Dato</h3>
         <p>
           Søndag<br>
@@ -316,7 +476,7 @@
         </p>
       </div>
 
-      <div class="card">
+      <div class="card reveal delay-2">
         <h3>Tid</h3>
         <p>
           Dåpsgudstjeneste<br>
@@ -324,7 +484,7 @@
         </p>
       </div>
 
-      <div class="card">
+      <div class="card reveal delay-3">
         <h3>Feiring</h3>
         <p>
           Etter dåpen inviteres det til selskap for familie og venner.
@@ -334,52 +494,103 @@
   </section>
 
   <section class="quote">
-    <p>
+    <p class="reveal">
       “La barna komme til meg, og hindre dem ikke! For Guds rike tilhører slike som dem.”
     </p>
-    <span>Markus 10,14</span>
+    <span class="reveal delay-1">Markus 10,14</span>
   </section>
 
-  <section class="rsvp">
-    <h2>RSVP</h2>
-    <p>
-      Vi setter stor pris på svar innen 1. juli 2026.
-    </p>
+  <section class="invitation">
+    <div class="baby-section" aria-label="Bilde av Belma">
+      <img class="baby-photo reveal" src="belma.png" alt="Belma" />
+    </div>
 
-    <a class="button" href="mailto:helle.victoria@hotmail.com?subject=Belma%20sin%20d%C3%A5p">
-      Gi beskjed her
-    </a>
+    <div class="rsvp reveal delay-1">
+      <h2>RSVP</h2>
+      <p>
+        Vi setter stor pris på svar innen 1. juli 2026.
+      </p>
+
+      <a class="button" href="mailto:helle.victoria@hotmail.com?subject=Belma%20sin%20d%C3%A5p">
+        Gi beskjed her
+      </a>
+    </div>
   </section>
 
   <footer>
-    Med kjærlighet · Belma sin dåp · Lillestrøm kirke ·
-    Foto: <a href="https://commons.wikimedia.org/wiki/File:Lillestr%C3%B6m_kirke.jpg">Bjoertvedt</a>,
-    <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>
+    Med kjærlighet · Belma sin dåp · Lillestrøm kirke
   </footer>
 
   <script>
     const audio = document.getElementById('background-music');
     const musicToggle = document.querySelector('.music-toggle');
-    const volumeIcon = `
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M11 5 6 9H2v6h4l5 4V5Z"></path>
-        <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
-        <path d="M18.5 5.5a9 9 0 0 1 0 13"></path>
-      </svg>
-    `;
-    const muteIcon = `
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M11 5 6 9H2v6h4l5 4V5Z"></path>
-        <path d="m16 9 5 5"></path>
-        <path d="m21 9-5 5"></path>
-      </svg>
-    `;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const icons = {
+      volume: `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M11 5 6 9H2v6h4l5 4V5Z"></path>
+          <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
+          <path d="M18.5 5.5a9 9 0 0 1 0 13"></path>
+        </svg>
+      `,
+      muted: `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M11 5 6 9H2v6h4l5 4V5Z"></path>
+          <path d="m16 9 5 5"></path>
+          <path d="m21 9-5 5"></path>
+        </svg>
+      `
+    };
 
     function updateMusicButton() {
       const isPaused = audio.paused;
-      musicToggle.innerHTML = isPaused ? volumeIcon : muteIcon;
+      musicToggle.innerHTML = isPaused ? icons.muted : icons.volume;
       musicToggle.setAttribute('aria-label', isPaused ? 'Spill musikk' : 'Sett musikk på pause');
       musicToggle.setAttribute('title', isPaused ? 'Spill musikk' : 'Sett musikk på pause');
+    }
+
+    function setupRevealAnimations() {
+      const revealItems = document.querySelectorAll('.reveal');
+
+      if (!('IntersectionObserver' in window) || reducedMotion) {
+        revealItems.forEach((item) => item.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        rootMargin: '0px 0px -12% 0px',
+        threshold: 0.15
+      });
+
+      revealItems.forEach((item) => observer.observe(item));
+    }
+
+    function setupHeroParallax() {
+      if (reducedMotion) return;
+
+      let ticking = false;
+
+      function updateParallax() {
+        const offset = Math.min(window.scrollY * 0.18, 120);
+        document.documentElement.style.setProperty('--hero-parallax', `${offset}px`);
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      updateParallax();
     }
 
     musicToggle.addEventListener('click', async () => {
@@ -394,6 +605,8 @@
     audio.play().then(updateMusicButton).catch(updateMusicButton);
     audio.addEventListener('play', updateMusicButton);
     audio.addEventListener('pause', updateMusicButton);
+    setupRevealAnimations();
+    setupHeroParallax();
   </script>
 
 </body>
