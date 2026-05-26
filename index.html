@@ -183,6 +183,18 @@
       transition: transform 0.25s ease, opacity 0.25s ease;
     }
 
+    .music-toggle svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+      margin: auto;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
     .music-toggle:hover {
       opacity: 0.9;
       transform: scale(1.04);
@@ -273,7 +285,7 @@
     <source src="daap.mp3" type="audio/mpeg">
   </audio>
 
-  <button class="music-toggle" type="button" aria-label="Spill musikk" title="Spill musikk">♪</button>
+  <button class="music-toggle" type="button" aria-label="Spill musikk" title="Spill musikk"></button>
 
   <section class="hero">
     <div class="hero-content">
@@ -348,10 +360,24 @@
   <script>
     const audio = document.getElementById('background-music');
     const musicToggle = document.querySelector('.music-toggle');
+    const volumeIcon = `
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M11 5 6 9H2v6h4l5 4V5Z"></path>
+        <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
+        <path d="M18.5 5.5a9 9 0 0 1 0 13"></path>
+      </svg>
+    `;
+    const muteIcon = `
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M11 5 6 9H2v6h4l5 4V5Z"></path>
+        <path d="m16 9 5 5"></path>
+        <path d="m21 9-5 5"></path>
+      </svg>
+    `;
 
     function updateMusicButton() {
       const isPaused = audio.paused;
-      musicToggle.textContent = isPaused ? '♪' : 'Ⅱ';
+      musicToggle.innerHTML = isPaused ? volumeIcon : muteIcon;
       musicToggle.setAttribute('aria-label', isPaused ? 'Spill musikk' : 'Sett musikk på pause');
       musicToggle.setAttribute('title', isPaused ? 'Spill musikk' : 'Sett musikk på pause');
     }
